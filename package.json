@@ -1,0 +1,37 @@
+{
+  "name": "express-react-typescript",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node,Client\" -c \"cyan.bold,green.bold,yellow.bold\" \"npm run watch-ts\" \"npm run watch-server\" \"npm run client\"",
+    "build": "npm run build-ts && npm run build-client",
+    "build-ts": "tsc",
+    "build-client": "cd client && npm run build",
+    "client": "node start-client.js",
+    "server": "node ./bin/www",
+    "watch-ts": "tsc -w",
+    "watch-server": "nodemon ./bin/www",
+    "tslint": "tslint -p tsconfig.json",
+    "production": "export NODE_ENV=production && export PORT=3000 && npm run build && npm run server"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.4",
+    "@types/express": "^4.0.36",
+    "@types/jest": "^20.0.5",
+    "@types/morgan": "^1.7.32",
+    "@types/node": "^8.0.17",
+    "concurrently": "^3.5.0",
+    "jest": "^20.0.4",
+    "nodemon": "^1.11.0",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.2"
+  }
+}
