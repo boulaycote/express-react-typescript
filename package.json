@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node,Client\" -c \"cyan.bold,green.bold,yellow.bold\" \"npm run watch-ts\" \"npm run watch-server\" \"npm run client\"",
-    "build": "npm run build-ts && npm run build-client",
+    "build": "npm run build-ts && npm run build-client && npm run tslint",
     "build-ts": "tsc",
     "build-client": "cd client && npm run build",
     "client": "node start-client.js",
