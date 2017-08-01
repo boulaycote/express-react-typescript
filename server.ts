@@ -13,6 +13,7 @@ export class Server {
     if (!this.server) {
       this.server = new Server();
     }
+      
     this.server.app.set("port", port);
     return this.server.app;
   }
