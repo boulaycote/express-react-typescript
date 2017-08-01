@@ -3,16 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node,Client\" -c \"cyan.bold,green.bold,yellow.bold\" \"npm run watch-ts\" \"npm run watch-server -s\" \"npm run client\"",
+    "start": "concurrently -k -p \"[{name}]\" -n \"Server,Server,Client\" -c \"green.bold,green.bold,yellow.bold\" \"npm run watch-ts\" \"npm run watch-server\" \"npm run client\"",
     "build": "npm run build-ts && npm run build-client && npm run tslint",
     "build-ts": "tsc",
     "build-client": "cd client && npm run build",
     "client": "node start-client.js",
     "server": "node ./bin/www",
-    "watch-ts": "tsc -w",
-    "prewatch-ts": "npm run tslint",
+    "watch-ts": "nodemon -e ts -x \"npm run tslint && npm run build-ts\"",
     "watch-server": "nodemon ./bin/www",
-    "tslint": "tslint --force -p tsconfig.json",
+    "tslint": "tslint --force -t codeFrame -p tsconfig.json",
     "production": "export NODE_ENV=production && export PORT=3000 && npm run build && npm run server"
   },
   "dependencies": {
